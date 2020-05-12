@@ -23,8 +23,3 @@ def getOpticalCenter(m_projection):
     optical_center = np.append(optical_center,1)
     
     return optical_center
-
-
-#test
-m_proj = np.array([[1, 2,3,4], [5, 6,7,8], [9, 10, 11,12]])
-print(getOpticalCenter(m_proj))
