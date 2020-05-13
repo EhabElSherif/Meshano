@@ -46,6 +46,9 @@ def get_nth_maximum(arr,n):
     #     return -1
     # return sortedmatrix[0 if n > sortedmatrix.size else -n] 
 
+def get_optical_axis(projectionMat):
+    return np.array([projectionMat[2][0],projectionMat[2][1],projectionMat[2][2],0])
+
 # %% [markdown]
 # <h2>Constants</h2>
 
@@ -55,6 +58,10 @@ datasetPath = "Data/dinoSparseRing/"
 ß2 = 32
 µ = 5       # the projection of one of its edges into R(p) is parallel to the image rows, and the smallest axis-aligned square containingits image covers a µ × µ pixel^2 area
 # We associate with p a reference image R(p),the images S(p) where p should be visible and the images T(p) where it is truly found 
+
+cosMinAngle = np.math.cos(np.math.radians(20))
+cosMaxAngle = np.math.cos(np.math.radians(60))
+
 patchModel = {
     "R":None,
     "S":set,
@@ -100,6 +107,7 @@ def read_parameters_file(datasetPath):
     lines = inputFile.readlines()
     lines.pop(0) # drop images number
     projections = []
+    optAxes = []
     # Every line is a parameters list for the corresponding image camera
     for line in lines:
         line = line[:-1]                # \n character
@@ -120,6 +128,13 @@ def read_parameters_file(datasetPath):
         p = np.matmul(k,x)
         projections.append(p)
 
+        optAxis = get_optical_axis(p)
+        optAxis *= np.linalg.det(p[:,:-1])
+        norm = np.linalg.norm(optAxis)
+        # optAxis[3] = p[2][3]
+        optAxis /= norm
+        optAxes.append(optAxis)
+
         outputFile = open(datasetPath+"projection/projection"+imgName[6:10]+".txt",mode="w+")
         outputFile.write("CONTOUR\n")
         pString = ""
@@ -130,7 +145,7 @@ def read_parameters_file(datasetPath):
         outputFile.write(pString)
         outputFile.close()
         
-    return projections
+    return projections,optAxes
 
 # %% [markdown]
 # <h2>Feature Detection
@@ -414,11 +429,12 @@ def drawlines(img1,lines,pts1):
         x1,y1 = map(int, [c, -(r[2]+r[0]*c)/r[1] ])
         cv.line(reducedFeaturesImage, (x0,y0), (x1,y1), color,1)
         cv.line(fullFeaturesImage, (x0,y0), (x1,y1), color,1)
-
+    
+    
     a = lines[0][0]
     b = lines[0][1]
     c = lines[0][2]
-
+    
     maxDistance = 2 * np.sqrt((a**2)+(b**2)) 
     legalFeatures = []
     for pt in pts1:
@@ -435,11 +451,30 @@ def drawlines(img1,lines,pts1):
     return fullFeaturesImage,reducedFeaturesImage,legalFeatures
 
 # %% [markdown]
+# <h2>Get Relevent Images
+
+# %%
+def get_relevent_images(imgModels,idx):
+    releventImages = []
+    myOptAxis = imgModels[idx]["optAxis"]
+
+    for i in range(len(imgModels)):
+        if i == idx:
+            continue
+        otherOptAxis = imgModels[i]["optAxis"]
+        cosAngle = np.dot(myOptAxis,otherOptAxis)
+
+        if cosMinAngle > cosAngle > cosMaxAngle:
+            releventImages.append(i)
+
+    return releventImages
+
+# %% [markdown]
 # <h2>Main
 
 # %%
 images,grids = init_imgs(datasetPath)
-projections = read_parameters_file(datasetPath)
+projections,optAxes = read_parameters_file(datasetPath)
 print("Read Input---->DONE")
 imagesModels = list()
 for idx,image in enumerate(images):
@@ -451,6 +486,7 @@ for idx,image in enumerate(images):
         "image": images[idx],
         "projMat": projections[idx],
         "optCenter": opticalCenter,
+        "optAxis": optAxes[idx],
         "grid": grids[idx],
         "dog": dog,
         "harris": harris,
@@ -462,24 +498,29 @@ for idx,image in enumerate(images):
     
     imagesModels.append(imgModel)
 
-print("Feature detection---->DONE")
+print("Feature Detection---->DONE")
+
+for i in range(len(imagesModels)):
+    imagesModels[i]["releventImgs"] = get_relevent_images(imagesModels,i)
+    print(imagesModels[i]["releventImgs"])
+    
+print("Get Relevent Images---->DONE")
 # show_images([imagesFeatures[0]["dog"],imagesFeatures[0]["sparseDog"],imagesFeatures[0]["harris"],imagesFeatures[0]["sparseHarris"]],['dog','sparse dog','harris','sparse harris'])
 
 
 # %%
 triangulations = list()
 baseImageIdx = 0
-for i in range(0,len(images)):
-    if i == baseImageIdx:
-        continue
-
-    fundmentalMat = get_fundmental_matrix(imagesModels[baseImageIdx],imagesModels[i])
+for i in range(len(imagesModels[baseImageIdx]["releventImgs"])):
+    releventImageIdx = imagesModels[baseImageIdx]["releventImgs"][i]
+    print(releventImageIdx)
+    fundmentalMat = get_fundmental_matrix(imagesModels[baseImageIdx],imagesModels[releventImageIdx])
  
     if fundmentalMat is None:
         continue
     pt1 = imagesModels[baseImageIdx]["dogPositions"][100]
     pts1 = np.int32([pt1])
-    pts2 = np.int32(imagesModels[i]["dogPositions"])
+    pts2 = np.int32(imagesModels[releventImageIdx]["dogPositions"])
     
     originalWithFeaturePt = imagesModels[baseImageIdx]["image"].copy()
     cv.circle(originalWithFeaturePt,tuple(pt1),5,(0,0,255),-1)
@@ -497,19 +538,20 @@ for i in range(0,len(images)):
     # parameter1: the second image
     # parameter2: the epilines that lie on the second image
     # parameter3: the features lie on the second image
-    fullFeaturesImage,reducedFeaturesImage,legalFeatures = drawlines(imagesModels[i],lines,pts2)
+    fullFeaturesImage,reducedFeaturesImage,legalFeatures = drawlines(imagesModels[releventImageIdx],lines,pts2)
     
     #Triangulation
     for j in range(len(legalFeatures)):
-        triangulatedPointsHomogeneous = cv.triangulatePoints(imagesModels[baseImageIdx]["projMat"],imagesModels[i]["projMat"],pt1,legalFeatures[j])
+        triangulatedPointsHomogeneous = cv.triangulatePoints(imagesModels[baseImageIdx]["projMat"],imagesModels[releventImageIdx]["projMat"],pt1,legalFeatures[j])
         triangulatedPoint = triangulatedPointsHomogeneous[:3, :] / triangulatedPointsHomogeneous[3, :]
         #triangulatedPoint = triangulate_point(np.array([pt1[0], pt1[1],1]),legalFeatures[j],imagesModels[baseImageIdx]["projMat"],imagesModels[i]["projMat"])
         
-        distFromcenter = abs(np.linalg.norm(np.array(imagesModels[baseImageIdx]["optCenter"][:-1]) - np.array([triangulatedPoint[0][0], triangulatedPoint[1][0], triangulatedPoint[2][0]])))
-        
+        distFromcenter = abs(abs(np.linalg.norm(np.array(imagesModels[baseImageIdx]["optCenter"][:-1]) - np.array([triangulatedPoint[0][0], triangulatedPoint[1][0], triangulatedPoint[2][0]]))) - abs(np.linalg.norm(np.array(imagesModels[releventImageIdx]["optCenter"][:-1]) - np.array([triangulatedPoint[0][0], triangulatedPoint[1][0], triangulatedPoint[2][0]]))))
+
         triangulation = {
-            "imageIdx": i,
-            "triangulatedPoint": triangulatedPoint,
+            "referenceImg": baseImageIdx,
+            "originalImg": releventImageIdx,
+            "patchCenter": triangulatedPoint,
             "distFromCenter": distFromcenter,
             "ptx": legalFeatures[j][0],
             "pty": legalFeatures[j][1]
@@ -517,13 +559,36 @@ for i in range(0,len(images)):
         
         triangulations.append(triangulation)
 
-    show_images([imagesModels[baseImageIdx]["image"],imagesModels[i]["image"],fullFeaturesImage,reducedFeaturesImage, originalWithFeaturePt],["image"+str(baseImageIdx),"image"+str(i),"fullfeatures in image"+str(i),"reducedfeatures in image"+str(i), "originalWithFeaturePt"+str(i)])
+    show_images([imagesModels[baseImageIdx]["image"],imagesModels[releventImageIdx]["image"],fullFeaturesImage,reducedFeaturesImage, originalWithFeaturePt],["image"+str(baseImageIdx),"image"+str(releventImageIdx),"fullfeatures in image"+str(releventImageIdx),"reducedfeatures in image"+str(releventImageIdx), "originalWithFeaturePt"+str(releventImageIdx)])
 
 triangulations = sorted(triangulations, key=lambda k: k["distFromCenter"]) 
 for i in range(len(triangulations)):
-    print("triangulations: ", triangulations[i]["imageIdx"], "ptx", triangulations[i]["ptx"], "pty", triangulations[i]["pty"], triangulations[i]["distFromCenter"])
+    print("triangulations: ", triangulations[i]["originalImg"], "ptx", triangulations[i]["ptx"], "pty", triangulations[i]["pty"], triangulations[i]["distFromCenter"])
 
 
 # %%
+baseOptCenter = imagesModels[baseImageIdx]["optCenter"]
+for candidate in triangulations:
 
+    normalVector = np.float32([
+            baseOptCenter[0] - candidate["patchCenter"][0],
+            baseOptCenter[1] - candidate["patchCenter"][1],
+            baseOptCenter[2] - candidate["patchCenter"][2]
+        ])
+    normalVector = normalVector / np.linalg.norm(direction)
+    candidate["normalVector"] = normalVector
+
+    tImgs = []
+
+    for releventImage in triangulations:
+        if otherCandidate is candidate:
+            continue
+        
+        otherImgIdx = otherCandidate["originalImage"]
+        otherNormal = np.float32([
+            baseOptCenter[0] - candidate["patchCenter"][0],
+            baseOptCenter[1] - candidate["patchCenter"][1],
+            baseOptCenter[2] - candidate["patchCenter"][2]
+        ])
+        
 
