@@ -1,5 +1,5 @@
-import numpy as np
 import open3d as o3d
+import sys
 
 def lod_mesh_export(mesh, lods, extension, path):
     mesh_lods={}
@@ -11,19 +11,12 @@ def lod_mesh_export(mesh, lods, extension, path):
     print("generation of "+str(i)+" LoD successful")
     return mesh_lods
 
-point_cloud = np.loadtxt('pointcloud.txt.ply',skiprows=13)
-pcd = o3d.geometry.PointCloud()
-pcd.points = o3d.utility.Vector3dVector(point_cloud[:,:3])
-pcd.colors = o3d.utility.Vector3dVector(point_cloud[:,6:9]/255)
-pcd.normals = o3d.utility.Vector3dVector(point_cloud[:,3:6])
-
+pcd = o3d.io.read_point_cloud(sys.argv[1])
 o3d.visualization.draw_geometries([pcd],window_name = 'Our patches from matching')
 
 poisson_mesh = o3d.geometry.TriangleMesh.create_from_point_cloud_poisson(pcd, depth=8, width=0, scale=1.1, linear_fit=False)[0]
-
 bbox = pcd.get_axis_aligned_bounding_box()
-o3d.visualization.draw_geometries([poisson_mesh],window_name = 'Poisson Surface Reconstruction')
 p_mesh_crop = poisson_mesh.crop(bbox)
 o3d.visualization.draw_geometries([p_mesh_crop],window_name = 'Bounding Volume Crop')
-my_lods = lod_mesh_export(p_mesh_crop, [100000,50000,10000,1000,100], ".obj", 'output_path')
+# my_lods = lod_mesh_export(p_mesh_crop, [100000,50000,10000,1000,100], ".obj", 'output_path')
 # print(np.asarray(bbox.get_box_points()))
