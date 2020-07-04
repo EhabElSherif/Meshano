@@ -1,0 +1,441 @@
+0: dinoSR0001
+image_size:	640x480
+1: dinoSR0002
+image_size:	640x480
+2: dinoSR0003
+image_size:	640x480
+3: dinoSR0004
+image_size:	640x480
+4: dinoSR0005
+image_size:	640x480
+5: dinoSR0006
+image_size:	640x480
+6: dinoSR0007
+image_size:	640x480
+7: dinoSR0008
+image_size:	640x480
+8: dinoSR0009
+image_size:	640x480
+9: dinoSR0010
+image_size:	640x480
+10: dinoSR0011
+image_size:	640x480
+11: dinoSR0012
+image_size:	640x480
+12: dinoSR0013
+image_size:	640x480
+13: dinoSR0014
+image_size:	640x480
+14: dinoSR0015
+image_size:	640x480
+15: dinoSR0016
+image_size:	640x480
+Loading image pixel data ...done in 0s
+
+Compute Missing Pairwise Matching, begin...
+********* WARNING ***********
+More than 112MB of graphic memory may be allocated
+under the default settings. If the program halts here,
+adjust parameters to save memory and rerun the task: 
+    [Tools->Enable GPU->Set Maximum DIM]
+Note some octaves may be automatically skipped
+SIFT: 0000, 640x480, 	644, 1.16sec
+SIFT: 0001, 640x480, 	692, 0.11sec
+SIFT: 0002, 640x480, 	712, 0.11sec
+SIFT: 0003, 640x480, 	726, 0.10sec
+SIFT: 0004, 640x480, 	859, 0.12sec
+SIFT: 0005, 640x480, 	1086, 0.12sec
+SIFT: 0006, 640x480, 	1177, 0.12sec
+SIFT: 0007, 640x480, 	1146, 0.12sec
+SIFT: 0008, 640x480, 	1110, 0.12sec
+SIFT: 0009, 640x480, 	1120, 0.11sec
+SIFT: 0010, 640x480, 	1150, 0.11sec
+SIFT: 0011, 640x480, 	1065, 0.10sec
+SIFT: 0012, 640x480, 	992, 0.13sec
+SIFT: 0013, 640x480, 	1076, 0.11sec
+SIFT: 0014, 640x480, 	671, 0.13sec
+SIFT: 0015, 640x480, 	622, 0.10sec
+
+###########-------timing------#########
+16 Feature Detection finished, 3 sec used
+#############################
+
+120 pairs to compute match
+NOTE: using 3 matching workers
+0000 and 0002: 39 matches, 0.02sec, #1
+0001 and 0002: 118 matches, 0.03sec, #2
+0001 and 0002: [92/118], H[12], 0.03sec
+0000 and 0002: [23/39], H[8], 0.04sec
+0000 and 0003: 21 matches, 0.03sec, #2
+0003 and 0005: 17 matches, 0.02sec, #1
+0001 and 0003: 33 matches, 0.02sec, #2
+0004 and 0005: 20 matches, 0.03sec, #1
+0001 and 0003: [21/33], H[7], 0.01sec
+0000 and 0006: 10 matches, 0.02sec, #1
+0002 and 0003: 89 matches, 0.03sec, #2
+0000 and 0001: 105 matches, 0.22sec, #0
+0001 and 0006: 16 matches, 0.02sec, #1
+0002 and 0003: [69/89], H[17], 0.00sec
+0000 and 0001: [75/105], H[11], 0.00sec
+0002 and 0006: 10 matches, 0.02sec, #1
+0002 and 0007: 10 matches, 0.03sec, #0
+0003 and 0006: 9 matches, 0.03sec, #1
+0000 and 0004: 14 matches, 0.02sec, #2
+0003 and 0007: 19 matches, 0.03sec, #0
+0001 and 0004: 17 matches, 0.04sec, #2
+0004 and 0006: 15 matches, 0.05sec, #1
+0004 and 0007: 17 matches, 0.04sec, #0
+0002 and 0004: 19 matches, 0.03sec, #2
+0005 and 0006: 20 matches, 0.04sec, #1
+0003 and 0004: 40 matches, 0.03sec, #2
+0005 and 0007: 20 matches, 0.03sec, #0
+0003 and 0004: [25/40], H[6], 0.01sec
+0000 and 0007: 16 matches, 0.03sec, #1
+0006 and 0007: 68 matches, 0.04sec, #0
+0006 and 0007: [47/68], H[12], 0.00sec
+0001 and 0007: 15 matches, 0.03sec, #1
+0000 and 0005: 17 matches, 0.02sec, #2
+0005 and 0008: 12 matches, 0.03sec, #1
+0001 and 0005: 12 matches, 0.02sec, #2
+0000 and 0008: 7 matches, 0.03sec, #0
+0002 and 0005: 12 matches, 0.02sec, #2
+0006 and 0008: 27 matches, 0.04sec, #1
+0006 and 0008: [15/27], H[8], 0.01sec
+0001 and 0008: 13 matches, 0.03sec, #0
+0007 and 0009: 74 matches, 0.03sec, #2
+0007 and 0009: [48/74], H[14], 0.00sec
+0002 and 0008: 11 matches, 0.03sec, #0
+0003 and 0008: 12 matches, 0.05sec, #0
+0008 and 0009: 161 matches, 0.04sec, #2
+0007 and 0008: 144 matches, 0.04sec, #1
+0008 and 0009: [120/161], H[13], 0.00sec
+0007 and 0008: [110/144], H[20], 0.00sec
+0004 and 0008: 11 matches, 0.04sec, #0
+0008 and 0010: 52 matches, 0.04sec, #0
+0008 and 0010: [35/52], H[7], 0.00sec
+0000 and 0010: 18 matches, 0.03sec, #2
+0000 and 0009: 19 matches, 0.04sec, #1
+0001 and 0010: 20 matches, 0.03sec, #2
+0009 and 0010: 136 matches, 0.04sec, #0
+0009 and 0010: [110/136], H[23], 0.00sec
+0001 and 0009: 16 matches, 0.06sec, #1
+0002 and 0010: 6 matches, 0.03sec, #2
+0003 and 0010: 10 matches, 0.02sec, #2
+0002 and 0009: 13 matches, 0.04sec, #1
+0000 and 0011: 16 matches, 0.03sec, #0
+0004 and 0010: 7 matches, 0.04sec, #2
+0003 and 0009: 11 matches, 0.04sec, #1
+0001 and 0011: 12 matches, 0.03sec, #0
+0005 and 0010: 15 matches, 0.05sec, #2
+0002 and 0011: 14 matches, 0.03sec, #0
+0004 and 0009: 10 matches, 0.05sec, #1
+0003 and 0011: 13 matches, 0.03sec, #0
+0006 and 0010: 13 matches, 0.05sec, #2
+0004 and 0011: 6 matches, 0.03sec, #0
+0007 and 0010: 38 matches, 0.03sec, #2
+0007 and 0010: [22/38], H[4], 0.01sec
+0005 and 0009: 13 matches, 0.08sec, #1
+0005 and 0011: 14 matches, 0.03sec, #0
+0008 and 0011: 12 matches, 0.02sec, #2
+0006 and 0009: 18 matches, 0.05sec, #1
+0006 and 0011: 23 matches, 0.04sec, #0
+0007 and 0012: 8 matches, 0.04sec, #1
+0007 and 0011: 12 matches, 0.04sec, #0
+0009 and 0011: 23 matches, 0.07sec, #2
+0008 and 0012: 13 matches, 0.04sec, #1
+0005 and 0013: 9 matches, 0.03sec, #0
+0010 and 0011: 76 matches, 0.05sec, #2
+0006 and 0013: 14 matches, 0.03sec, #0
+0009 and 0012: 18 matches, 0.04sec, #1
+0010 and 0011: [41/76], H[9], 0.01sec
+0007 and 0013: 10 matches, 0.03sec, #0
+0010 and 0012: 16 matches, 0.03sec, #1
+0011 and 0012: 30 matches, 0.02sec, #1
+0008 and 0013: 15 matches, 0.03sec, #0
+0000 and 0012: 11 matches, 0.03sec, #2
+0009 and 0013: 8 matches, 0.05sec, #0
+0001 and 0012: 11 matches, 0.02sec, #2
+0011 and 0012: [13/30], H[4], 0.06sec
+0002 and 0012: 12 matches, 0.03sec, #2
+0010 and 0013: 10 matches, 0.04sec, #0
+0003 and 0012: 14 matches, 0.03sec, #2
+0000 and 0013: 15 matches, 0.03sec, #1
+0011 and 0013: 9 matches, 0.04sec, #0
+0001 and 0013: 11 matches, 0.03sec, #1
+0004 and 0012: 9 matches, 0.03sec, #2
+0002 and 0013: 10 matches, 0.02sec, #1
+0012 and 0013: 17 matches, 0.05sec, #0
+0005 and 0012: 16 matches, 0.03sec, #2
+0003 and 0013: 15 matches, 0.03sec, #1
+0000 and 0014: 35 matches, 0.03sec, #0
+0006 and 0012: 13 matches, 0.03sec, #2
+0000 and 0014: [26/35], H[9], 0.00sec
+0004 and 0013: 17 matches, 0.02sec, #1
+0002 and 0014: 15 matches, 0.03sec, #2
+0012 and 0014: 10 matches, 0.03sec, #1
+0001 and 0014: 20 matches, 0.03sec, #0
+0003 and 0014: 15 matches, 0.03sec, #2
+0013 and 0014: 23 matches, 0.03sec, #1
+0007 and 0015: 16 matches, 0.03sec, #0
+0004 and 0014: 13 matches, 0.03sec, #2
+0000 and 0015: 187 matches, 0.02sec, #1
+0000 and 0015: [150/187], H[50], 0.00sec
+0008 and 0015: 9 matches, 0.03sec, #0
+0005 and 0014: 8 matches, 0.03sec, #2
+0001 and 0015: 68 matches, 0.02sec, #1
+0006 and 0014: 11 matches, 0.02sec, #2
+0001 and 0015: [47/68], H[13], 0.00sec
+0009 and 0015: 14 matches, 0.05sec, #0
+0007 and 0014: 20 matches, 0.03sec, #2
+0010 and 0015: 10 matches, 0.03sec, #0
+0002 and 0015: 25 matches, 0.03sec, #1
+0008 and 0014: 9 matches, 0.03sec, #2
+0011 and 0015: 7 matches, 0.03sec, #0
+0002 and 0015: [15/25], H[5], 0.01sec
+0009 and 0014: 15 matches, 0.03sec, #2
+0012 and 0015: 11 matches, 0.04sec, #0
+0010 and 0014: 10 matches, 0.03sec, #2
+0003 and 0015: 15 matches, 0.03sec, #1
+0013 and 0015: 15 matches, 0.03sec, #0
+0011 and 0014: 11 matches, 0.03sec, #2
+0004 and 0015: 21 matches, 0.02sec, #1
+0014 and 0015: 51 matches, 0.03sec, #0
+0014 and 0015: [34/51], H[6], 0.00sec
+0005 and 0015: 11 matches, 0.02sec, #1
+0006 and 0015: 13 matches, 0.02sec, #1
+
+###########-------timing------#########
+120 Image Match finished, 2 sec used
+#############################
+
+----------------------------------------------------------------
+Compute Missing Pairwise Matching, finished
+Totally 5.000 seconds used
+
+
+Run full 3D reconstruction, begin...
+18 pairs have two-view models
+21 pairs have fundamental matrices
+Initialize with dinoSR0009 and dinoSR0010
+120 3D points initialized from two images
+PBA library version = 105
+PBA: 120 3D pts, 2 cams and 240 projs...
+PBA: 0.107 -> 0.104 (3 LMs in 0.25sec)
+Focal Length : [768.000]->[768.022]
+Focal Length : [768.000]->[767.977]
+
+#############################
+#3: [dinoSR0008] sees 101 (+55) 3D points
+Estimated Focal Length [536][0.84N]
+# 55 projs (0 pts and 0 merges)
+PBA: 120 3D pts, 3 cams and 295 projs...
+PBA: 3.564 -> 0.336 (23 LMs in 0.36sec)
+
+**************************************
+#3/3:  165 projs and 55 pts added.
+PBA: 166 3D pts, 3 cams and 387 projs...
+PBA: 3.111 -> 0.691 (34 LMs in 0.25sec)
+PBA: 166 3D pts, 3 cams and 387 projs...
+PBA: 0.691 -> 0.639 (17 LMs in 0.17sec)
+Focal Length : [536.046]->[726.167]
+Radial Distortion : [-2.955 -> -184]
+
+#############################
+#4: [dinoSR0011] sees 79 (+61) 3D points
+Estimated Focal Length [115][0.18W]
+# 22 projs (0 pts and 0 merges)
+PBA: 141 3D pts, 4 cams and 359 projs...
+PBA: 2.285 -> 0.631 (19 LMs in 0.32sec)
+#points w/ large errors:	2
+Focal Length : [115.284]->[139.770]
+Radial Distortion : [-0.092 -> -155]
+
+#############################
+#5: [dinoSR0007] sees 29 (+18) 3D points
+17: too few projection inliers
+
+#############################
+#5: [dinoSR0007] sees 29 (+18) 3D points
+13: too few projection inliers
+
+#############################
+#5: [dinoSR0007] sees 29 (+18) 3D points
+15: too few projection inliers
+
+#############################
+#5: [dinoSR0007] sees 29 (+18) 3D points
+16: too few projection inliers
+END: No more images to add [0 projs]
+
+#############################
+Initialize with dinoSR0002 and dinoSR0003
+91 3D points initialized from two images
+PBA: 91 3D pts, 2 cams and 182 projs...
+PBA: 0.092 -> 0.091 (3 LMs in 0.08sec)
+Focal Length : [768.000]->[770.152]
+Focal Length : [768.000]->[766.110]
+
+#############################
+#3: [dinoSR0001] sees 38 (+37) 3D points
+Estimated Focal Length [513][0.80N]
+# 29 projs (0 pts and 0 merges)
+PBA: 91 3D pts, 3 cams and 211 projs...
+PBA: 0.729 -> 0.268 (29 LMs in 0.28sec)
+
+**************************************
+#3/3:  29 projs and 0 pts added.
+PBA: 81 3D pts, 3 cams and 191 projs...
+PBA: 0.383 -> 0.338 (16 LMs in 0.29sec)
+PBA: 81 3D pts, 3 cams and 191 projs...
+PBA: 0.338 -> 0.331 (15 LMs in 0.06sec)
+Focal Length : [513.473]->[559.081]
+Radial Distortion : [-0.278 -> -30]
+
+#############################
+#4: [dinoSR0016] sees 41 (+130) 3D points
+Estimated Focal Length [352][0.55W]
+# 26 projs (0 pts and 0 merges)
+PBA: 80 3D pts, 4 cams and 215 projs...
+PBA: 0.353 -> 0.353 (12 LMs in 0.14sec)
+Focal Length : [351.647]->[351.647]
+Radial Distortion : [0.000 -> 0]
+
+#############################
+#5: [dinoSR0004] sees 29 (+38) 3D points
+Estimated Focal Length [460][0.72N]
+# 32 projs (0 pts and 0 merges)
+PBA: 80 3D pts, 5 cams and 247 projs...
+PBA: 2.150 -> 1.220 (16 LMs in 0.24sec)
+#points w/ large errors:	1
+
+**************************************
+#5/5:  231 projs and 99 pts added.
+PBA: 178 3D pts, 5 cams and 442 projs...
+PBA: 17.854 -> 1.292 (19 LMs in 0.45sec)
+#points w/ large errors:	2
+#unstable points removed:	1
+PBA: 175 3D pts, 5 cams and 434 projs...
+PBA: 1.404 -> 1.373 (20 LMs in 0.39sec)
+Focal Length : [460.350]->[507.662]
+Radial Distortion : [-0.394 -> -51]
+
+#############################
+#6: [dinoSR0015] sees 38 (+16) 3D points
+15: too few projection inliers
+
+#############################
+#6: [dinoSR0015] sees 38 (+16) 3D points
+15: too few projection inliers
+END: No more images to add [0 projs]
+
+#############################
+Failed to find two images for initialization
+Resuming SfM finished, 3 sec used
+
+---------------------------------------------------
+5 cams, 179 pts (3+: 47)
+434 projections (3+: 178)
+---------------------------------------------------
+2 model(s) reconstructed from 16 images;
+9 modeled; 0 reused; 0 EXIF; 
+0MB(0) used to store feature location.
+---------------------------------------------------
+
+########-------timing------#########
+Structure-From-Motion finished, 4 sec used
+3.4(3.4) seconds on Bundle Adjustment (+)
+3.3(3.3) seconds on Bundle Adjustment (*)
+#############################
+----------------------------------------------------------------
+Run full 3D reconstruction, finished
+Totally 4.000 seconds used
+
+
+Compute remaining photos, begin...
+
+#############################
+#6: [dinoSR0015] sees 38 (+17) 3D points
+15: too few projection inliers
+
+#############################
+#6: [dinoSR0015] sees 38 (+17) 3D points
+14: too few projection inliers
+
+#############################
+#6: [dinoSR0015] sees 38 (+17) 3D points
+14: too few projection inliers
+END: No more images to add [0 projs]
+
+#############################
+
+---------------------------------------------------
+5 cams, 179 pts (3+: 47)
+434 projections (3+: 178)
+---------------------------------------------------
+2 model(s) reconstructed from 16 images;
+9 modeled; 0 reused; 0 EXIF; 
+0MB(0) used to store feature location.
+---------------------------------------------------
+----------------------------------------------------------------
+Compute remaining photos, finished
+Totally 1.000 seconds used
+
+
+Compute remaining photos, begin...
+
+#############################
+#6: [dinoSR0015] sees 38 (+17) 3D points
+15: too few projection inliers
+
+#############################
+#6: [dinoSR0015] sees 38 (+17) 3D points
+13: too few projection inliers
+
+#############################
+#6: [dinoSR0015] sees 38 (+17) 3D points
+15: too few projection inliers
+END: No more images to add [0 projs]
+
+#############################
+
+---------------------------------------------------
+5 cams, 179 pts (3+: 47)
+434 projections (3+: 178)
+---------------------------------------------------
+2 model(s) reconstructed from 16 images;
+9 modeled; 0 reused; 0 EXIF; 
+0MB(0) used to store feature location.
+---------------------------------------------------
+----------------------------------------------------------------
+Compute remaining photos, finished
+Totally 0.000 seconds used
+
+
+Compute Bundle Adjustment, begin...
+PBA: 175 3D pts, 5 cams and 434 projs...
+PBA: 1.373 -> 1.346 (16 LMs in 0.58sec)
+----------------------------------------------------------------
+Compute Bundle Adjustment, finished
+Totally 0.000 seconds used
+
+
+Compute Missing Pairwise Matching, begin...
+0 pairs to compute match
+----------------------------------------------------------------
+Compute Missing Pairwise Matching, finished
+Totally 0.000 seconds used
+
+
+Compute Missing Pairwise Matching, begin...
+0 pairs to compute match
+----------------------------------------------------------------
+Compute Missing Pairwise Matching, finished
+Totally 0.000 seconds used
+
+
+Compute Missing Pairwise Matching, begin...
+0 pairs to compute match
+----------------------------------------------------------------
+Compute Missing Pairwise Matching, finished
+Totally 0.000 seconds used
+
