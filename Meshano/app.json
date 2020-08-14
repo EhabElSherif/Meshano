@@ -2,8 +2,6 @@
   "expo": {
     "name": "Meshano",
     "slug": "Meshano",
-    "privacy": "public",
-    "sdkVersion": "36.0.0",
     "platforms": [
       "ios",
       "android",
@@ -11,11 +9,12 @@
     ],
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/images/icon.png",
+    "scheme": "myapp",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/images/splash.png",
       "resizeMode": "cover",
-      "backgroundColor": "#111111"
+      "backgroundColor": "#ffffff"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -23,8 +22,36 @@
     "assetBundlePatterns": [
       "**/*"
     ],
+    "packagerOpts": {
+      "assetExts": [
+        "ttf",
+        "mp4",
+        "dae",
+        "obj",
+        "amf",
+        "3mf",
+        "3ds",
+        "jpg",
+        "assimp",
+        "fbx",
+        "pmd",
+        "vmd",
+        "ply",
+        "stl",
+        "vtk",
+        "vtp",
+        "sea"
+      ]
+    },
+    "android": {
+      "package": "com.meshano.Meshano",
+      "versionCode": 1
+    },
     "ios": {
       "supportsTablet": true
+    },
+    "web": {
+      "favicon": "./assets/images/favicon.png"
     },
     "description": ""
   }
