@@ -91,7 +91,7 @@ export default class ModelsScreen extends React.Component{
 						this.state.selectedModel = model
 					}}
 				>
-					<Image source={{uri:this.state.uri}} style={[styles.modelImage, this.calculatedSize(), this.scale()]}></Image>
+					<Image source={model.path} style={[styles.modelImage, this.calculatedSize(), this.scale()]}></Image>
 					{/* <Text style={styles.modelTitle}>{model.name}</Text> */}
 				</TouchableOpacity>
 			)

@@ -66,36 +66,38 @@ export default class ModelScreen extends React.Component {
 		scene.add(ambientLight);
 
 		const pointLight = new PointLight(0xffffff, 2, 1000, 1);
-		pointLight.position.set(200, 500, 500);
+		pointLight.position.set(0, 0, 500);
 		scene.add(pointLight);
 
 		const spotLight = new SpotLight(0xffffff, 0.5);
-		spotLight.position.set(100, 500, 100);
+		spotLight.position.set(10, 10, 0);
 		spotLight.lookAt(scene.position);
 		scene.add(spotLight);
 		
-		const cube = new IconMesh();
-		cube.position.set(2,2,2)
-		scene.add(cube);
+		// const cube = new IconMesh();
+		// cube.position.set(2,2,2)
+		// scene.add(cube);
 
-		// var model = {
-		// 	'obj': require('./../assets/models/Hamburger/Hamburger.obj'),
-		// 	'png': require('./../assets/models/Hamburger/Hamburger.png'),
-		// };
-		// // Load model!
-		// var object = await ExpoTHREE.loadAsync(
-		// 	[model['obj']],
-		// 	null,
-		// 	name => model[name]
-		// );
+		var model = {
+			'obj': require('./../assets/models/aroos.obj'),
+			// 'png': require('./../assets/models/Hamburger/Hamburger.png'),
+		};
+		// Load model!
+		var object = await ExpoTHREE.loadAsync(
+			[model['obj']],
+			null,
+			name => model[name]
+		);
 
-		// // Update size and position
-		// ExpoTHREE.utils.scaleLongestSideToSize(object, 1);
-		// ExpoTHREE.utils.alignMesh(object, { y: 1 });
-		// // Smooth mesh
-		// ExpoTHREE.utils.computeMeshNormals(object);
-		// object.scale.set(0.2,0.2,0.2);
-		// scene.add(object);
+		// Update size and position
+		ExpoTHREE.utils.scaleLongestSideToSize(object, 1);
+		ExpoTHREE.utils.alignMesh(object, { y: 1 });
+		// Smooth mesh
+		ExpoTHREE.utils.computeMeshNormals(object);
+		object.scale.set(0.5,0.5,0.5);
+		object.position.set(1,1,-1)
+		object.rotation.set(-Math.PI/2,-Math.PI/2,-Math.PI)
+		scene.add(object);
 
 		// model = {
 		// 	'obj': require('./../assets/models/thomas/thomas.obj'),
@@ -123,8 +125,9 @@ export default class ModelScreen extends React.Component {
 
 		function update() {
 			// Cube
-			scene.children[4].rotation.x += 0.05;
-			scene.children[4].rotation.y += 0.05;
+			// scene.children[4].rotation.x += 0.01;
+			// scene.children[4].rotation.y += 0.01;
+			// scene.children[4].rotation.z += 0.05;
 
 			// // Hamburger
 			// scene.children[5].rotation.y += 0.05;
