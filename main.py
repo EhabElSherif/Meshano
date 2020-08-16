@@ -18,7 +18,6 @@ def handleInput(inputFileName):
                 print(' '.join(line.split()[0:6]), file=o)
     args = "mesh.exe --in pointCloud.txt --out output_%s" % inputFileName
     subprocess.call(args, shell=False)
-    x = "pleaseWork"
     args2 = "meshio-convert    "+"output_"+inputFileName[:-4]+".ply "+inputFileName[:-4]+".obj"
     print(args2)
     subprocess.call(args2, shell=False)

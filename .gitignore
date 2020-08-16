@@ -1,0 +1,6 @@
+Meshano/.expo/
+Meshano/node_modules/
+.ipynb_checkpoints
+
+*.log
+*.pyc
