@@ -1,7 +1,9 @@
 from flask import Flask, jsonify, request
 from sys import exc_info
 import os, shutil
-from pmvs import main
+import pmvs
+import mesh
+import camera
 
 def clear_folder(folder):
     for filename in os.listdir(folder):
@@ -25,8 +27,10 @@ def get_images():
         uploaded_files = request.files.getlist("file[]")
         for idx,file in enumerate(uploaded_files):
             file.save(dst=datasetPath+"images/"+file.filename+".jpg")
-
-        main(datasetPath)
+            
+        camera.main(datasetPath)
+        pmvs.main(datasetPath)
+        mesh.main("expansion_pointcloud.ply")
         print('DONE')
     except:
         print(exc_info())
