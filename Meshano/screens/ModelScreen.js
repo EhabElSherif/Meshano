@@ -79,7 +79,7 @@ export default class ModelScreen extends React.Component {
 		// scene.add(cube);
 
 		var model = {
-			'obj': require('./../assets/models/aroos.obj'),
+			'obj': require('./../assets/models/toy.obj'),
 			// 'png': require('./../assets/models/Hamburger/Hamburger.png'),
 		};
 		// Load model!
@@ -94,7 +94,7 @@ export default class ModelScreen extends React.Component {
 		ExpoTHREE.utils.alignMesh(object, { y: 1 });
 		// Smooth mesh
 		ExpoTHREE.utils.computeMeshNormals(object);
-		object.scale.set(0.5,0.5,0.5);
+		object.scale.set(0.75,0.75,0.75);
 		object.position.set(1,1,-1)
 		object.rotation.set(-Math.PI/2,-Math.PI/2,-Math.PI)
 		scene.add(object);
