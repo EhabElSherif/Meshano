@@ -1,0 +1,58 @@
+{
+  "expo": {
+    "name": "Meshano",
+    "slug": "Meshano",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/icon.png",
+    "scheme": "myapp",
+    "splash": {
+      "image": "./assets/images/splash.png",
+      "resizeMode": "cover",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "packagerOpts": {
+      "assetExts": [
+        "ttf",
+        "mp4",
+        "dae",
+        "obj",
+        "amf",
+        "3mf",
+        "3ds",
+        "jpg",
+        "assimp",
+        "fbx",
+        "pmd",
+        "vmd",
+        "ply",
+        "stl",
+        "vtk",
+        "vtp",
+        "sea"
+      ]
+    },
+    "android": {
+      "package": "com.meshano.Meshano",
+      "versionCode": 1
+    },
+    "ios": {
+      "supportsTablet": true
+    },
+    "web": {
+      "favicon": "./assets/images/favicon.png"
+    },
+    "description": ""
+  }
+}
